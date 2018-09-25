@@ -30,7 +30,7 @@ public  class main extends GameMode {
                                     System.out.println("Vous avex choisi le mode challenger");
                                     System.out.println("Veuillez rentrez une combinaison de chiffres");
                                     try {
-                                        String code = Integer.toString(scanner.nextInt());
+                                       while String code = Integer.toString(scanner.nextInt());
                                         Challenger(code);
                                     } catch (InputMismatchException e) {
                                         System.out.print(e.getMessage());
