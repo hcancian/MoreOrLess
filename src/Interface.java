@@ -13,53 +13,55 @@ public class Interface {
         System.out.println("3 : Mode dev \n");
         Scanner scanner = new Scanner(System.in);
         try {
-            int Game1 = scanner.nextInt();
-            switch (Game1) {
+            int Game = scanner.nextInt();
+            switch (Game) {
                 case 1:
                     System.out.println("- Vous avez choisis le MoreOrLess");
                     System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :");
                     System.out.println("1 : Mode Challenger");
                     System.out.println("2 : Mode Duel");
                     System.out.println("3 : Mode Defenseur");
+
                     int Mode = scanner.nextInt();
                     switch (Mode) {
                         case 1:
                             System.out.println("Vous avex choisi le mode challenger");
                             System.out.println("Veuillez rentrez une combinaison de chiffres");
                             try {
+                                GameMode gameMode = new GameMode();
+                                gameMode.Challenger();
+                            } catch (InputMismatchException e) {
+                                System.out.print(e.getMessage());
+                            }
+                    }
+
+                    case 2:
+                        System.out.println("- Vous avez choisis le MasterMind");
+                        System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
+                        System.out.println("1 : Mode Challenger");
+                        System.out.println("2 : Mode Duel");
+                        System.out.println("3 : Mode Defenseur");
+
+                         Mode = scanner.nextInt();
+                    switch (Mode) {
+                        case 1:
+                            System.out.println("Vous avex choisi le mode challenger");
+                            System.out.println("Veuillez rentrez une combinaison de chiffres");
+                            try {
                                 String code = Integer.toString(scanner.nextInt());
-                                GameMode.Challenger(code);
+                                GameModeM.Mastermind();
                             } catch (InputMismatchException e) {
                                 System.out.print(e.getMessage());
                             }
                             break;
                     }
-                    switch (Game1) {
-                        case 2:
-                            System.out.println("- Vous avez choisis le MasterMind");
-                            System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
-                            System.out.println("1 : Mode Challenger");
-                            System.out.println("2 : Mode Duel");
-                            System.out.println("3 : Mode Defenseur");
-                            int Mode2 = scanner.nextInt();
-                            switch (Mode2) {
-                                case 1:
-                                    System.out.println("Vous avex choisi le mode challenger");
-                                    System.out.println("Veuillez rentrez une combinaison de chiffres");
-                                    try {
-                                        String code = Integer.toString(scanner.nextInt());
-                                        GameModeM.Mastermind();
-                                    } catch (InputMismatchException e) {
-                                        System.out.print(e.getMessage());
-                                    }
-                            }
-
-                    }
-                    break;
                 }
-        } catch (Exception e) {
-                    e.printStackTrace();
-        }
 
+            }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
+
+
+

@@ -1,82 +1,65 @@
 package main.java.MoreOrLess;
-import java.awt.*;
-import java.lang.Math;
-import java.util.Random;
+
+
+
+import java.util.Scanner;
+
 
 
 public class GameMode {
 
-    public static boolean isAnInteger(String code) {
-        try {
-            code.matches("^\\p{Digit}+$");
-        } catch (NumberFormatException e) {
+    Scanner scanner = new Scanner(System.in);
+
+    public boolean isAnInteger( String code )
+    {
+        try{
+            Integer.parseInt(code);
+            return true;
+        }catch(Exception e){
             return false;
         }
-        return true;
     }
 
-    public static void Challenger(String code) {
-        String secret = "2345678";
+    public void Challenger() {
+        String code = scanner.next();
+        String secret = "1265934";
+        String verif = "";
 
-        boolean testInt;
-        testInt = isAnInteger(code);
-        int s = code.length();
-        int i = 0;
-        int nbTry = 10;
+        int codeEntre;
+        int secretEntre;
+        int s = secret.length();
+        int i;
         int compteur = 0;
-        int secretCode[] = new int[s];
-        int codeEntre[] = new int[s];
-        String tabNum[] = new String[code.length()];
-        Random r = new Random();
-        for ( i = 0; i < s; i++) {
-            System.out.println(secret);
-            codeEntre[i] = code.charAt(i);
-            secretCode[i] = code.charAt(i);
-        }
-        if (testInt == false) {
-            System.out.println("La chaine de caractere n'est pas composé de chiffre");
-        }else if (s != code.length()) {
-            System.out.println("Il n'y a pas " + s + " chiffres");
-        } else {
-            boolean victoire = false;
-            do{
-                System.out.println("Essaie " + compteur+1 + "sur " +nbTry);
-                for( i=0 ; i<s ; i++)
-                    System.out.print(codeEntre[i] + " ");
-                System.out.println();
-                victoire = true;
-                for (i = 0; i<s;i++){
-                    if(codeEntre[i] == secretCode[i])
-                        tabNum[i] = "=";
-                    else if((codeEntre[i] > secretCode[i]))
-                        tabNum[i] = "-";
-                        else
-                        tabNum[i] = "+";
+            if (isAnInteger(code) == true) {
+                if (s == code.length()) {
+                    do {
+                        code = Integer.toString(scanner.nextInt());
+                        for (i = 0; i < s; i++) {
+                            codeEntre = Integer.parseInt(String.valueOf(code.charAt(i)));
+                            secretEntre = Integer.parseInt(String.valueOf(secret.charAt(i)));
+
+                            if (codeEntre == secretEntre)
+                                verif += "=";
+                            else if (codeEntre < secretEntre)
+                                verif += "+";
+                            else if (codeEntre > secretEntre)
+                                verif += "-";
+                        }
+                        System.out.println("Vous avez tapé : " + code + " Etat : " + verif);
+                        verif = "";
+                        compteur++;
+                    } while ((!code.equals(secret)) && compteur <= 10);
+                    if (code.equals(secret))
+                    {   System.out.println("vous avez trouvé le code");
+                        scanner.close();
+                    }else{
+                        System.out.println("vous n'avez  pas trouvé le code");
+                        scanner.close();
+                    }
+                } else {
+                    System.out.println("pas assez de chiffre ou trop de chiffre");
                 }
-            }while(!victoire && compteur < nbTry);
-        }
+            }else
+                System.out.println("La chaine de caractere n'est pas composé de chiffre");
     }
 }
-
-
-    /* public static void Defense(){
-         int [] secret = {1,2,6,5,9,3,4};
-         int s = secret.length;
-         int[] code = new int[7];
-         String[] tabNum = new String[s];
-         int i;
-         for(i = 0; i < s;i++){
-             code[i] = ((int)(Math.random() * (9 +1)));
-              if (code[i] == secret[i]) {
-                 tabNum[i] = "=";
-             } else if (code[i] < secret[i]) {
-                 tabNum[i] = "+";
-             } else if (code[i] > secret[i])
-                 tabNum[i] = "-";
-         }
-         System.out.println(Arrays.toString(secret));
-         System.out.println(Arrays.toString(code));
-         System.out.println(Arrays.toString(tabNum));
-     }
- }*/
-
