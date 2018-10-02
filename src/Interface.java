@@ -19,14 +19,13 @@ public class Interface {
                     System.out.println("- Vous avez choisis le MoreOrLess");
                     System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :");
                     System.out.println("1 : Mode Challenger");
-                    System.out.println("2 : Mode Duel");
-                    System.out.println("3 : Mode Defenseur");
+                    System.out.println("2 : Mode Defenseur ");
+                    System.out.println("3 : Mode Duel");
 
                     int Mode = scanner.nextInt();
                     switch (Mode) {
                         case 1:
                             System.out.println("Vous avex choisi le mode challenger");
-                            System.out.println("Veuillez rentrez une combinaison de chiffres");
                             try {
                                 GameMode gameMode = new GameMode();
                                 gameMode.Challenger();
@@ -35,28 +34,36 @@ public class Interface {
                             }
                     }
 
-                    case 2:
-                        System.out.println("- Vous avez choisis le MasterMind");
-                        System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
-                        System.out.println("1 : Mode Challenger");
-                        System.out.println("2 : Mode Duel");
-                        System.out.println("3 : Mode Defenseur");
+                case 2:
+                    System.out.println("- Vous avez choisis le MasterMind");
+                    System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
+                    System.out.println("1 : Mode Challenger");
+                    System.out.println("2 : Mode Defenseur");
+                    System.out.println("3 : Mode Duel");
 
-                         Mode = scanner.nextInt();
+                    Mode = scanner.nextInt();
                     switch (Mode) {
                         case 1:
                             System.out.println("Vous avex choisi le mode challenger");
-                            System.out.println("Veuillez rentrez une combinaison de chiffres");
                             try {
-                                String code = Integer.toString(scanner.nextInt());
                                 GameModeM.Mastermind();
+
                             } catch (InputMismatchException e) {
                                 System.out.print(e.getMessage());
                             }
                             break;
+                        case 2:
+                            System.out.println("Vous avex choisi le mode défenseur");
+                            try {
+                                GameModeM.MastermindDuel();
+
+                            } catch (InputMismatchException e) {
+                                System.out.print(e.getMessage());
+                            }
+                            break;
+
                     }
                 }
-
             }catch(Exception e){
             e.printStackTrace();
         }

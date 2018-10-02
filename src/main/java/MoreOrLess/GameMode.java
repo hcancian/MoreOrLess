@@ -10,18 +10,28 @@ public class GameMode {
 
     Scanner scanner = new Scanner(System.in);
 
-    public boolean isAnInteger( String code )
-    {
-        try{
+    public boolean isAnInteger(String code) {
+        try {
             Integer.parseInt(code);
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean stringLenght(String code, String s2) {
+        int codeLenght = code.length();
+        int s2Lenght = s2.length();
+        try {
+            s2Lenght = codeLenght;
+            return true;
+        } catch (StringIndexOutOfBoundsException e) {
             return false;
         }
     }
 
     public void Challenger() {
-        String code = scanner.next();
+        String code;
         String secret = "1265934";
         String verif = "";
 
@@ -30,36 +40,38 @@ public class GameMode {
         int s = secret.length();
         int i;
         int compteur = 0;
+        do {
+            System.out.println("Veuillez rentrez une combinaison de chiffres");
+            code = Integer.toString(scanner.nextInt());
             if (isAnInteger(code) == true) {
-                if (s == code.length()) {
-                    do {
-                        code = Integer.toString(scanner.nextInt());
-                        for (i = 0; i < s; i++) {
-                            codeEntre = Integer.parseInt(String.valueOf(code.charAt(i)));
-                            secretEntre = Integer.parseInt(String.valueOf(secret.charAt(i)));
+                if (stringLenght(code, secret) == true) {
+                    for (i = 0; i < s; i++) {
+                        codeEntre = Integer.parseInt(String.valueOf(code.charAt(i)));
+                        secretEntre = Integer.parseInt(String.valueOf(secret.charAt(i)));
 
-                            if (codeEntre == secretEntre)
-                                verif += "=";
-                            else if (codeEntre < secretEntre)
-                                verif += "+";
-                            else if (codeEntre > secretEntre)
-                                verif += "-";
-                        }
-                        System.out.println("Vous avez tapé : " + code + " Etat : " + verif);
-                        verif = "";
-                        compteur++;
-                    } while ((!code.equals(secret)) && compteur <= 10);
-                    if (code.equals(secret))
-                    {   System.out.println("vous avez trouvé le code");
-                        scanner.close();
-                    }else{
-                        System.out.println("vous n'avez  pas trouvé le code");
-                        scanner.close();
+                        if (codeEntre == secretEntre)
+                            verif += "=";
+                        else if (codeEntre < secretEntre)
+                            verif += "+";
+                        else if (codeEntre > secretEntre)
+                            verif += "-";
                     }
+                    System.out.println("Vous avez tapé : " + code + " Etat : " + verif);
+                    verif = "";
+                    compteur++;
                 } else {
                     System.out.println("pas assez de chiffre ou trop de chiffre");
                 }
-            }else
+            } else
                 System.out.println("La chaine de caractere n'est pas composé de chiffre");
+
+        } while ((!code.equals(secret)) && compteur <= 10);
+        if (code.equals(secret)) {
+            System.out.println("vous avez trouvé le code");
+            scanner.close();
+        } else {
+            System.out.println("vous n'avez  pas trouvé le code");
+            scanner.close();
+        }
     }
 }
