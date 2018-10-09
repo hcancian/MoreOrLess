@@ -32,9 +32,19 @@ public class Interface {
                             } catch (InputMismatchException e) {
                                 System.out.print(e.getMessage());
                             }
+                            break;
+                        case 2:
+                            System.out.println("Vous avex choisi le mode defenseur");
+                            try {
+                                GameMode gameMode = new GameMode();
+                                gameMode.Defenseur();
+                            } catch (InputMismatchException e) {
+                                System.out.print(e.getMessage());
+                            }
+
                     }
 
-                case 2:
+               /* case 2:
                     System.out.println("- Vous avez choisis le MasterMind");
                     System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
                     System.out.println("1 : Mode Challenger");
@@ -62,7 +72,7 @@ public class Interface {
                             }
                             break;
 
-                    }
+                    }*/
                 }
             }catch(Exception e){
             e.printStackTrace();
