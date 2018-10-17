@@ -1,13 +1,10 @@
 package main.java.MasterMind;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class GameModeM {
-    public static String good = "bien placés";
-    public static String almost = "bon chiffre mais mauvaise place";
     public static Scanner scanner = new Scanner(System.in);
 
 
@@ -16,6 +13,7 @@ public class GameModeM {
         int nbChiffres = 7;
         int MAX = 9;
         int maxTry = 20;
+        int diff = 0 ;
         int[] codeEntre = new int[nbChiffres];
         int[] solution = new int[nbChiffres];
         int count = 0;
@@ -40,14 +38,21 @@ public class GameModeM {
                     if (codeEntre[i] == solution[j] && j == i) {
                         countgood++;
                     }
-                    else if(codeEntre[i] == solution[j] ){
+                    else if(codeEntre[i] == solution[j] && i!=j ){
                         countalmost++;
                     }
                 }
             }
                 count++;
+            if(countgood == nbChiffres)
+                System.out.println("Il y a 0 bons chiffres mal placé et " + countgood +
+                        "bon chiffre bien placés");
+            else {
+                diff = nbChiffres - countalmost;
+                countalmost = countalmost - diff;
                 System.out.println("Il y a " + countalmost + "bons chiffres mal placé et " + countgood +
                         "bon chiffre bien placés");
+            }
                 countgood = 0;
                 countalmost = 0;
             } while (!Arrays.toString(codeEntre).equals(Arrays.toString(solution)) && count <= maxTry);
@@ -59,7 +64,7 @@ public class GameModeM {
             scanner.close();
         }
     }
-    public static void MastermindDuel() {
+    /*public static void MastermindDuel() {
         String code;
         int nbChiffres = 7;
         int MAX = 9;
@@ -88,7 +93,7 @@ public class GameModeM {
                     if (codeEntre[i] == solution[j] && j == i) {
                         countgood++;
                     }
-                    else if(codeEntre[i] == solution[j] ){
+                    else if(codeEntre[i] == solution[j] && j != i){
                         countalmost++;
                     }
                 }
@@ -106,5 +111,5 @@ public class GameModeM {
             System.out.println("vous n'avez  pas trouvé le code");
             scanner.close();
         }
-    }
+    }*/
 }

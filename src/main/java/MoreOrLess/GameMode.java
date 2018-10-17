@@ -81,19 +81,19 @@ public class GameMode {
         String verif = "";
         String code = "";
         String secret;
-        int[] codeEntre = new int[4];
-        int[] secretEntre = new int[4];
+        int[] codeEntre = new int[7];
+        int[] secretEntre = new int[7];
 
         int i;
         int compteur = 0;
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 6; i++) {
             codeEntre[i] = r.nextInt(9 + 1);
             secretEntre[i] = r.nextInt(9 + 1);
         }
         do {
             System.out.println(Arrays.toString(secretEntre));
 
-                    for (i = 0; i <4 ; i++) {
+                    for (i = 0; i <7 ; i++) {
                         if (codeEntre[i] == secretEntre[i])
                             verif += "=";
                         else if (codeEntre[i] < secretEntre[i]) {

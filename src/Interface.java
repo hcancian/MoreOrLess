@@ -44,7 +44,7 @@ public class Interface {
 
                     }
 
-               /* case 2:
+               case 2:
                     System.out.println("- Vous avez choisis le MasterMind");
                     System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
                     System.out.println("1 : Mode Challenger");
@@ -62,7 +62,7 @@ public class Interface {
                                 System.out.print(e.getMessage());
                             }
                             break;
-                        case 2:
+                        /*case 2:
                             System.out.println("Vous avex choisi le mode défenseur");
                             try {
                                 GameModeM.MastermindDuel();
@@ -71,8 +71,8 @@ public class Interface {
                                 System.out.print(e.getMessage());
                             }
                             break;
-
-                    }*/
+*/
+                    }
                 }
             }catch(Exception e){
             e.printStackTrace();
