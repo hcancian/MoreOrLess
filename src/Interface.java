@@ -41,16 +41,14 @@ public class Interface {
                             } catch (InputMismatchException e) {
                                 System.out.print(e.getMessage());
                             }
-
                     }
-
-               case 2:
+                    break;
+                    case 2:
                     System.out.println("- Vous avez choisis le MasterMind");
                     System.out.println("Veuillez choisir le mode auquel vous souhaitez jouer :  ");
                     System.out.println("1 : Mode Challenger");
                     System.out.println("2 : Mode Defenseur");
                     System.out.println("3 : Mode Duel");
-
                     Mode = scanner.nextInt();
                     switch (Mode) {
                         case 1:
