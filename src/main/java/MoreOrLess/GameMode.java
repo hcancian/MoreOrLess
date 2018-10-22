@@ -79,8 +79,6 @@ public class GameMode {
     public void Defenseur() {
         Random r = new Random();
         String verif = "";
-        String code = "";
-        String secret;
         int[] codeEntre = new int[7];
         int[] secretEntre = new int[7];
 
@@ -107,7 +105,7 @@ public class GameMode {
                     System.out.println("Vous avez tapé : " + Arrays.toString(codeEntre)+ " Etat : " + verif);
                     verif = "";
                     compteur++;
-        } while ((!Arrays.toString(codeEntre).equals(Arrays.toString(secretEntre))) && compteur <= 10);
+        } while ((!Arrays.toString(codeEntre).equals(Arrays.toString(secretEntre))) && compteur <= 3);
         if (Arrays.toString(codeEntre).equals(Arrays.toString(secretEntre))){
             System.out.println("vous avez trouvé le code");
         } else {
