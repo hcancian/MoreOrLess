@@ -63,7 +63,7 @@ public class GameModeM {
         }
     }
     public static void MastermindDefense() {
-        int nbChiffres = 7;
+        int nbChiffres = 9;
         int MAX = 9;
         int maxTry = 20;
         int[] codeEntre = new int[nbChiffres];
