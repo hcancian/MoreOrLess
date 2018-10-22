@@ -48,8 +48,9 @@ public class GameModeM {
             if (goodMatches.size() == nbChiffres)
                 System.out.println("Vous avez tout trouvé");
             else {
-                System.out.println("Il y a " + goodMatches.size() + "bons chiffres bien placés et " + approximativeMatches.size() +
-                        "bon chiffre mal placés et " + wrongNumber.size() + " mauvais chiffre");
+                System.out.println("Il y a " + goodMatches.size() + "bons chiffres bien placés et "
+                        + approximativeMatches.size() + "bon chiffre mal placés et " + wrongNumber.size()
+                        + " mauvais chiffre");
             }
         } while (!Arrays.toString(codeEntre).equals(Arrays.toString(solution)) && count <= maxTry);
 
@@ -69,48 +70,48 @@ public class GameModeM {
         int[] solution = new int[nbChiffres];
         int count = 0;
         int i;
+        int h;
         Random r = new Random();
         for (i = 0; i < nbChiffres; i++) {
             solution[i] = r.nextInt(MAX + 1);
         }
         System.out.println(Arrays.toString(solution));
-
         List<Integer> goodMatches = new ArrayList<>();
         List<Integer> approximativeMatches = new ArrayList<>();
         List<Integer> wrongNumber = new ArrayList<>();
-        List<Integer> goodNumbergoodMatches = new ArrayList<>();
-        // verif bien , mal place et non */
-        for (i = 0; i < nbChiffres; i++) {
-            if (codeEntre[i] == solution[i]) {
-                goodMatches.add(i);
-                goodNumbergoodMatches.add(codeEntre[i]);
-            } else {
-                boolean foundMatch = false;
-                for (int j = 0; j < nbChiffres; j++) {
-                    if (codeEntre[i] == solution[j] && i != j && !goodMatches.contains(j)) {
-                        approximativeMatches.add(i);
-                        foundMatch = true;
-                        break;
-                    }
-                }
-                if (!foundMatch) wrongNumber.add(i);
-            }
-        }
-        count++;
-        if (goodMatches.size() == nbChiffres)
-            System.out.println("Vous avez tout trouvé");
-        else {
-            System.out.println("Il y a " + goodMatches.size() + "bons chiffres bien placés et " + approximativeMatches.size() +
-                    "bon chiffre mal placés et " + wrongNumber.size() + " mauvais chiffre");
-        }
-        while (!Arrays.toString(codeEntre).equals(Arrays.toString(solution)) && count <= maxTry);
+        do {
+            // verif bien , mal place et non */
+          for(h = 0; h < nbChiffres;h++) {
+              for (i = 0; i < nbChiffres; i++) {
+                  if (codeEntre[i] == solution[i]) {
+                      goodMatches.add(i);
 
-            if (Arrays.toString(codeEntre).equals(Arrays.toString(solution))) {
+                  } else {
+                      boolean foundMatch = false;
+                      for (int j = 0; j < nbChiffres; j++) {
+                          if (codeEntre[i] == solution[j] && i != j && !goodMatches.contains(j)) {
+                              approximativeMatches.add(i);
+                              foundMatch = true;
+                              break;
+                          }
+                      }
+                      if (!foundMatch) wrongNumber.add(i);
+                  }
+              }
+          }
+                count++;
+                if (goodMatches.size() == nbChiffres)
+                    System.out.println("Vous avez tout trouvé");
+                else {
+                    System.out.println("Il y a " + goodMatches.size() + "bons chiffres bien placés et "
+                            + approximativeMatches.size() + "bon chiffre mal placés et " + wrongNumber.size()
+                            + " mauvais chiffre");
+                }
+        }while (!Arrays.toString(codeEntre).equals(Arrays.toString(solution)) && count <= maxTry );
+        if (Arrays.toString(codeEntre).equals(Arrays.toString(solution))) {
                 System.out.println("vous avez trouvé le code en seulement " + count + " essais");
-                scanner.close();
             } else {
                 System.out.println("vous n'avez  pas trouvé le code");
-                scanner.close();
             }
+        }
     }
-}

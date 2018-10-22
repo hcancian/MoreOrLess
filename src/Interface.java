@@ -60,16 +60,16 @@ public class Interface {
                                 System.out.print(e.getMessage());
                             }
                             break;
-                        /*case 2:
+                        case 2:
                             System.out.println("Vous avex choisi le mode défenseur");
                             try {
-                                GameModeM.MastermindDuel();
+                                GameModeM.MastermindDefense();
 
                             } catch (InputMismatchException e) {
                                 System.out.print(e.getMessage());
                             }
                             break;
-*/
+
                     }
                 }
             }catch(Exception e){
