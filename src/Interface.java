@@ -68,10 +68,12 @@ public class Interface {
                             } catch (InputMismatchException e) {
                                 System.out.print(e.getMessage());
                             }
-                            break;
-
                     }
-                }
+                    break;
+                case 3 : System.out.println("- Vous avez choisis le Mode dev");
+                    System.out.println("Veuillez choisir le jeu auquel vous souhaitez jouer :  ");
+                    break;
+            }
             }catch(Exception e){
             e.printStackTrace();
         }

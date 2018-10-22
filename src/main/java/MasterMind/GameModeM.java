@@ -81,15 +81,16 @@ public class GameModeM {
         List<Integer> wrongNumber = new ArrayList<>();
         do {
             // verif bien , mal place et non */
-          for(h = 0; h < nbChiffres;h++) {
+          for(h = 0; h < 10;h++) {
+              System.out.println(h);
               for (i = 0; i < nbChiffres; i++) {
-                  if (codeEntre[i] == solution[i]) {
+                  if (h == solution[i]) {
                       goodMatches.add(i);
-
+                      codeEntre[i] = h;
                   } else {
                       boolean foundMatch = false;
                       for (int j = 0; j < nbChiffres; j++) {
-                          if (codeEntre[i] == solution[j] && i != j && !goodMatches.contains(j)) {
+                          if (h == solution[j] && i != j && !goodMatches.contains(j)) {
                               approximativeMatches.add(i);
                               foundMatch = true;
                               break;
@@ -99,6 +100,7 @@ public class GameModeM {
                   }
               }
           }
+          System.out.println(Arrays.toString(codeEntre));
                 count++;
                 if (goodMatches.size() == nbChiffres)
                     System.out.println("Vous avez tout trouvé");
