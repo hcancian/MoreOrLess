@@ -62,45 +62,54 @@ public class GameModeM {
             scanner.close();
         }
     }
+
     public static void MastermindDefense() {
-        int nbChiffres = 9;
+        int nbChiffres = 10;
         int MAX = 9;
         int maxTry = 20;
         int[] codeEntre = new int[nbChiffres];
         int[] solution = new int[nbChiffres];
+        //String solutin = "192837465";
+       // int[] solution = new int[nbChiffres];
         int count = 0;
         int i;
         int h;
-        Random r = new Random();
-        for (i = 0; i < nbChiffres; i++) {
-            solution[i] = r.nextInt(MAX + 1);
-        }
         System.out.println(Arrays.toString(solution));
+        //int s = solutin.length();
+         Random r = new Random();
+        for (i = 0; i < nbChiffres; i++) {
+          solution[i] = r.nextInt(MAX + 1);
+        }
+       // System.out.println(Arrays.toString(solution));
         List<Integer> goodMatches = new ArrayList<>();
         List<Integer> approximativeMatches = new ArrayList<>();
         List<Integer> wrongNumber = new ArrayList<>();
-        do {
-            // verif bien , mal place et non */
-          for(h = 0; h < 10;h++) {
-              System.out.println(h);
-              for (i = 0; i < nbChiffres; i++) {
-                  if (h == solution[i]) {
-                      goodMatches.add(i);
-                      codeEntre[i] = h;
-                  } else {
-                      boolean foundMatch = false;
-                      for (int j = 0; j < nbChiffres; j++) {
-                          if (h == solution[j] && i != j && !goodMatches.contains(j)) {
-                              approximativeMatches.add(i);
-                              foundMatch = true;
-                              break;
-                          }
-                      }
-                      if (!foundMatch) wrongNumber.add(i);
-                  }
-              }
-          }
-          System.out.println(Arrays.toString(codeEntre));
+        /*for (i = 0; i < s; i++) {
+            solution[i] = Integer.parseInt(String.valueOf(solutin.charAt(i)));
+        }*/
+        System.out.println(Arrays.toString(solution));
+            do {
+                // verif bien , mal place et non */
+                for (h = 0; h < 10; h++) {
+                    System.out.println(h);
+                    for (i = 0; i < nbChiffres; i++) {
+                        if (h == solution[i]) {
+                            goodMatches.add(i);
+                            codeEntre[i] = h;
+                        } else {
+                            boolean foundMatch = false;
+                            for (int j = 0; j < nbChiffres; j++) {
+                                if (h == solution[j] && i != j && !goodMatches.contains(j)) {
+                                    approximativeMatches.add(i);
+                                    foundMatch = true;
+                                    break;
+                                }
+                            }
+                            if (!foundMatch) wrongNumber.add(i);
+                        }
+                    }
+                }
+                System.out.println(Arrays.toString(codeEntre));
                 count++;
                 if (goodMatches.size() == nbChiffres)
                     System.out.println("Vous avez tout trouvé");
@@ -109,8 +118,8 @@ public class GameModeM {
                             + approximativeMatches.size() + "bon chiffre mal placés et " + wrongNumber.size()
                             + " mauvais chiffre");
                 }
-        }while (!Arrays.toString(codeEntre).equals(Arrays.toString(solution)) && count <= maxTry );
-        if (Arrays.toString(codeEntre).equals(Arrays.toString(solution))) {
+            } while (!Arrays.toString(codeEntre).equals(Arrays.toString(solution)) && count <= maxTry);
+            if (Arrays.toString(codeEntre).equals(Arrays.toString(solution))) {
                 System.out.println("vous avez trouvé le code en seulement " + count + " essais");
             } else {
                 System.out.println("vous n'avez  pas trouvé le code");
